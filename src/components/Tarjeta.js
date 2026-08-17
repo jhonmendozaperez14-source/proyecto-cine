@@ -1,5 +1,5 @@
 import React from 'react';
-import './tarjeta.css';
+import '../estilos-css/tarjeta.css';
 
 export default function Tarjeta({ title, img }) {
   return (

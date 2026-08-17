@@ -1,5 +1,5 @@
 import React from 'react';
-import './cabecera.css';
+import '../estilos-css/cabecera.css';
 
 export default function Cabecera() {
   return (
