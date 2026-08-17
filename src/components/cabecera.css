@@ -1,0 +1,5 @@
+.cabecera{position:sticky;top:0;z-index:40;background:#fff}
+.cabecera-inner{padding:10px 0}
+.logo-link{font-size:20px}
+.navegacion-principal a{color:#333;margin:0 10px;text-decoration:none}
+.acciones-cabecera .btn{font-weight:600}
