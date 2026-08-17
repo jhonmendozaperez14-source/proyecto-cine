@@ -6,6 +6,10 @@ export default function Tarjeta({ title, img }) {
     <article className="movie-card">
       <div className="movie-poster">
         <img src={img} alt={title} />
+        <div className="movie-overlay">
+          <div className="overlay-title">{title}</div>
+          <a className="btn btn-primary" href="#funciones">Ver funciones</a>
+        </div>
       </div>
       <div className="movie-info">
         <h3 className="movie-title">{title}</h3>

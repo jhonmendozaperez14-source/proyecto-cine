@@ -1,0 +1,18 @@
+/* Horizontal tarjetas row */
+.tarjetas-wrapper{position:relative;margin:18px 0}
+.tarjetas-row{display:flex;gap:20px;overflow-x:auto;padding:12px 36px;scroll-behavior:smooth}
+.tarjeta-item{min-width:220px;flex:0 0 220px}
+
+.scroll-btn{position:absolute;top:50%;transform:translateY(-50%);background:linear-gradient(90deg,rgba(7,19,42,0.9),rgba(7,19,42,0.6));color:#fff;border:none;width:44px;height:64px;border-radius:8px;cursor:pointer;font-size:28px}
+.scroll-btn.left{left:6px}
+.scroll-btn.right{right:6px}
+.scroll-btn:focus{outline:2px solid rgba(255,255,255,0.12)}
+
+/* hide default scrollbar in modern browsers */
+.tarjetas-row::-webkit-scrollbar{height:10px}
+.tarjetas-row::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.15);border-radius:10px}
+
+@media (max-width:720px){
+  .tarjeta-item{min-width:160px;flex:0 0 160px}
+  .scroll-btn{width:36px;height:56px}
+}
