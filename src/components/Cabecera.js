@@ -27,29 +27,14 @@ export default function Cabecera() {
         <div className="container barra-inner">
           <div className="ubicacion-selector">
             <button className="ubicacion-btn" aria-expanded="false" type="button">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="12" cy="9" r="2.2" fill="#fff" />
-              </svg>
               <span className="ubicacion-text">SELECCIONE UNA UBICACIÓN</span>
             </button>
-            <div className="ubicacion-dropdown" role="menu">
-              <button type="button" role="menuitem" className="ubicacion-item">Ciudad A</button>
-              <button type="button" role="menuitem" className="ubicacion-item">Ciudad B</button>
-              <button type="button" role="menuitem" className="ubicacion-item">Ciudad C</button>
-            </div>
           </div>
         </div>
       </div>
 
       <header className="cabecera">
         <div className="container cabecera-inner">
-          <button className="icon-btn buscar" aria-label="Buscar" type="button">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <circle cx="11" cy="11" r="6" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M21 21l-4.35-4.35" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
 
           <div className="logo">
             <Link to="/" className="logo-link">Cinemas</Link>
