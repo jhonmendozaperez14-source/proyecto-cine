@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './banner.css';
+import '../estilos-css/banner.css';
 
 const slides = [
   { id: 1, title: 'Spider-Man: Un nuevo día', img: '/imagenes/spider-man.jpg' },

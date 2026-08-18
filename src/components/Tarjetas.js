@@ -1,14 +1,14 @@
 import React, { useRef } from 'react';
 import Tarjeta from './Tarjeta';
-import './tarjetas.css';
+import '../estilos-css/tarjetas.css';
 
 const sampleMovies = [
-  { id: 1, title: 'Spider-Man: Un nuevo día', img: 'https://picsum.photos/300/430?random=31' },
-  { id: 2, title: 'Paw Patrol: The Dino Movie', img: 'https://picsum.photos/300/430?random=32' },
-  { id: 3, title: 'El final de Oak Street', img: 'https://picsum.photos/300/430?random=33' },
-  { id: 4, title: 'La odisea', img: 'https://picsum.photos/300/430?random=34' },
-  { id: 5, title: 'Sólo una noche', img: 'https://picsum.photos/300/430?random=35' },
-  { id: 6, title: 'El borde', img: 'https://picsum.photos/300/430?random=36' }
+  { id: 1, title: 'Spider-Man: Un nuevo día', img: '/imagenes/spiderman-tar.jpg' },
+  { id: 2, title: 'Paw Patrol: The Dino Movie', img: 'imagenes/paw-patrol.jpg' },
+  { id: 3, title: 'El final de Oak Street', img: 'imagenes/final-Street.jpg' },
+  { id: 4, title: 'La odisea', img: 'imagenes/odicea-tar.jpg' },
+  { id: 5, title: 'Sólo una noche', img: 'imagenes/solouna-noche.jpg' },
+  { id: 6, title: 'El borde', img: 'imagenes/border.jpg' }
 ];
 
 export default function Tarjetas() {

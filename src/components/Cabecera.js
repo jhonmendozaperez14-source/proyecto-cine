@@ -1,13 +1,31 @@
-import React from 'react';
-import './cabecera.css';
+import React, { useEffect, useRef, useState } from 'react';
+import '../estilos-css/cabecera.css';
 
 export default function Cabecera() {
+  const [menuAbierto, setMenuAbierto] = useState(null);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setMenuAbierto(null);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  function toggleMenu(menu) {
+    setMenuAbierto((actual) => (actual === menu ? null : menu));
+  }
+
   return (
     <>
       <div className="barra-superior">
         <div className="container barra-inner">
           <div className="ubicacion-selector">
-            <button className="ubicacion-btn" aria-expanded="false">
+            <button className="ubicacion-btn" aria-expanded="false" type="button">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                 <circle cx="12" cy="9" r="2.2" fill="#fff" />
@@ -25,7 +43,7 @@ export default function Cabecera() {
 
       <header className="cabecera">
         <div className="container cabecera-inner">
-          <button className="icon-btn buscar" aria-label="Buscar">
+          <button className="icon-btn buscar" aria-label="Buscar" type="button">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
               <circle cx="11" cy="11" r="6" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M21 21l-4.35-4.35" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -38,7 +56,7 @@ export default function Cabecera() {
           </div>
 
           <div className="acciones-cabecera">
-            <button className="icon-btn usuario" aria-label="Cuenta">
+            <button className="icon-btn usuario" aria-label="Cuenta" type="button">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                 <circle cx="12" cy="7" r="4" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -47,10 +65,9 @@ export default function Cabecera() {
           </div>
         </div>
 
-        <nav className="nav-secundaria">
+        <nav ref={navRef} className="nav-secundaria">
           <div className="nav-item"><a href="#peliculas">PELÍCULAS</a></div>
           <div className="nav-item"><a href="#menu">MENÚ</a></div>
-          <div className="nav-item"><a href="../pages/Promociones.html">PROMOCIONES</a></div>
           <div className="nav-item">
             <a href="#eventos">EVENTOS ▾</a>
             <div className="submenu">
@@ -58,9 +75,12 @@ export default function Cabecera() {
               <a href="#eventos-especiales">Especiales</a>
             </div>
           </div>
-          <div className="nav-item">
-            <a href="#mas">MÁS ▾</a>
-            <div className="submenu">
+
+          <div className={`nav-item ${menuAbierto === 'mas' ? 'open' : ''}`}>
+            <button type="button" className="nav-button" onClick={() => toggleMenu('mas')}>
+              MÁS ▾
+            </button>
+            <div className={`submenu ${menuAbierto === 'mas' ? 'open' : ''}`}>
               <a href="#sucursales">Sucursales</a>
               <a href="#contacto">Contacto</a>
             </div>
