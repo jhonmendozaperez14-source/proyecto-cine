@@ -16,8 +16,9 @@ export default function Principal() {
         </section>
       </main>
       <footer className="site-footer">
-        <div className="container">
-          <p>© {new Date().getFullYear()} Mi Cine - Sitio de ejemplo</p>
+        <div className="container footer-inner">
+          <div className="footer-brand">Cinemas</div>
+          <div className="footer-copy">© {new Date().getFullYear()} Cinemas. Todos los derechos reservados.</div>
         </div>
       </footer>
     </div>

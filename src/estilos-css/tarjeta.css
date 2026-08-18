@@ -1,12 +1,70 @@
-.movie-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(10,10,20,0.12);display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease;height:100%}
-.movie-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(10,10,20,0.18)}
+.movie-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(10, 10, 20, 0.12);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  height: 100%;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(10, 10, 20, 0.18);
+}
+
 /* fijar una relacion de aspecto consistente para los posters (alto > ancho) */
-.movie-poster{background:#000;position:relative;overflow:hidden;aspect-ratio:3/4;width:100%}
-.movie-poster img{display:block;width:100%;height:100%;object-fit:cover}
+.movie-poster {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+}
+
+.movie-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* overlay for title and CTA */
-.movie-overlay{position:absolute;left:0;right:0;bottom:0;padding:12px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.6));color:#fff;display:flex;justify-content:space-between;align-items:end}
-.movie-info{padding:12px}
-.movie-title{margin:6px 0 8px;font-size:16px}
-.movie-actions{display:flex;gap:8px}
-.btn-small{padding:6px 10px;font-size:13px;border-radius:6px}
-.btn-outline{background:transparent;border:1px solid #ccc}
+.movie-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.movie-info {
+  padding: 12px;
+}
+
+.movie-title {
+  margin: 6px 0 8px;
+  font-size: 16px;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-small {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #ccc;
+}
