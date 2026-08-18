@@ -1,11 +1,18 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Principal from './pages/Principal';
+import Promociones from './pages/Promociones.jsx';
+import Cabecera from './components/Cabecera';
 
 function App() {
   return (
-    <div className="App">
-      <Principal />
-    </div>
+    <BrowserRouter>
+      <Cabecera />
+      <Routes>
+        <Route path="/" element={<Principal />} />
+        <Route path="/promociones" element={<Promociones />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

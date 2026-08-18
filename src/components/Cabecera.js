@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../estilos-css/cabecera.css';
 
 export default function Cabecera() {
@@ -51,7 +52,7 @@ export default function Cabecera() {
           </button>
 
           <div className="logo">
-            <a href="#home" className="logo-link">Cinemas</a>
+            <Link to="/" className="logo-link">Cinemas</Link>
             <div className="logo-sub">LUXURY CINEMAS</div>
           </div>
 
@@ -67,13 +68,11 @@ export default function Cabecera() {
 
         <nav ref={navRef} className="nav-secundaria">
           <div className="nav-item"><a href="#peliculas">PELÍCULAS</a></div>
-          <div className="nav-item"><a href="#menu">MENÚ</a></div>
-
-          <div className={`nav-item ${menuAbierto === 'eventos' ? 'open' : ''}`}>
-            <button type="button" className="nav-button" onClick={() => toggleMenu('eventos')}>
-              EVENTOS ▾
-            </button>
-            <div className={`submenu ${menuAbierto === 'eventos' ? 'open' : ''}`}>
+          <div className="nav-item"><Link to="/">MENÚ</Link></div>
+          <div className="nav-item"><Link to="/promociones">PROMOCIONES</Link></div>
+          <div className="nav-item">
+            <a href="#eventos">EVENTOS ▾</a>
+            <div className="submenu">
               <a href="#eventos-corporativos">Corporativos</a>
               <a href="#eventos-especiales">Especiales</a>
             </div>

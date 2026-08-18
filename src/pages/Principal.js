@@ -1,5 +1,4 @@
 import React from 'react';
-import Cabecera from '../components/Cabecera';
 import Banner from '../components/Banner';
 import Tarjetas from '../components/Tarjetas';
 import '../pages/Principal.css';
@@ -7,7 +6,6 @@ import '../pages/Principal.css';
 export default function Principal() {
   return (
     <div className="site">
-      <Cabecera />
       <main className="site-main">
         <Banner />
         <section className="container">
