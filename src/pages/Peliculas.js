@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import '../estilos-css/peliculas.css';
 
 const peliculas = [
@@ -53,6 +53,7 @@ const peliculas = [
 ];
 
 export default function Peliculas({ mostrarCabecera = true }) {
+  const peliculasRef = useRef(null);
   const contenido = (
     <main className="peliculas-main">
       <div className="container peliculas-container">
@@ -62,9 +63,12 @@ export default function Peliculas({ mostrarCabecera = true }) {
           <span className="peliculas-texto">Aventura</span>
         </div>
 
-        <div className="peliculas-grid">
-          {peliculas.map((pelicula) => (
-            <article className="pelicula-card" key={pelicula.id}>
+        <div className="carousel-wrapper">
+          <button className="carousel-arrow left" type="button" aria-label="Anterior" onClick={() => { const el = peliculasRef.current; if (el) el.scrollBy({ left: -el.clientWidth * 0.7, behavior: 'smooth' }); }}>‹</button>
+
+          <div className="peliculas-grid" ref={peliculasRef}>
+            {peliculas.map((pelicula) => (
+              <article className="pelicula-card" key={pelicula.id}>
               <button className="play-btn" aria-label={`Reproducir ${pelicula.title}`} type="button">
                 ▶
               </button>
@@ -101,6 +105,9 @@ export default function Peliculas({ mostrarCabecera = true }) {
               </div>
             </article>
           ))}
+          </div>
+
+          <button className="carousel-arrow right" type="button" aria-label="Siguiente" onClick={() => { const el = peliculasRef.current; if (el) el.scrollBy({ left: el.clientWidth * 0.7, behavior: 'smooth' }); }}>›</button>
         </div>
       </div>
     </main>
