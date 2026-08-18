@@ -92,6 +92,13 @@ export default function Peliculas({ mostrarCabecera = true }) {
                   {pelicula.btn}
                 </button>
               </div>
+
+              <div className="card-bottom">
+                <div style={{display: 'flex', gap: '8px', alignItems: 'center'}}>
+                  <button type="button" className="small-btn">Funciones</button>
+                  <input type="text" aria-label="Buscar función" style={{width: '48px', padding: '6px', borderRadius: '4px', border: '1px solid #eee'}} />
+                </div>
+              </div>
             </article>
           ))}
         </div>
