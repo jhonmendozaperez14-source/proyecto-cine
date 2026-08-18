@@ -1,7 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Promociones.css';
 
 export default function Promociones() {
+  const [modal, setModal] = useState({ visible: false, title: '', description: '' });
+  const [filters, setFilters] = useState({ category: 'all', location: 'all' });
+
+  const promotions = [
+    {
+      id: 1,
+      title: 'Martes de película',
+      description: 'Compra una entrada y recibe otra gratis todos los martes.',
+      category: 'tickets',
+      location: 'all',
+      discount: '2x1',
+      type: 'ENTRADAS',
+      image: 'ticket-image'
+    },
+    {
+      id: 2,
+      title: 'Combo de película',
+      description: 'Combo grande de palomitas y bebida con 25% de descuento.',
+      category: 'food',
+      location: 'all',
+      discount: '-25%',
+      type: 'ALIMENTOS',
+      image: 'food-image'
+    },
+    {
+      id: 3,
+      title: 'CineMax Rewards',
+      description: 'Acumula puntos con tus compras y canjéalos por diferentes beneficios.',
+      category: 'rewards',
+      location: 'all',
+      discount: 'REWARDS',
+      type: 'REWARDS',
+      image: 'rewards-image'
+    },
+    {
+      id: 4,
+      title: 'Cine en familia',
+      description: 'Disfruta precios especiales en funciones familiares seleccionadas.',
+      category: 'family',
+      location: 'all',
+      discount: 'FAMILIA',
+      type: 'FAMILIA',
+      image: 'family-image'
+    },
+    {
+      id: 5,
+      title: 'Funciones especiales',
+      description: 'Consulta las películas participantes y horarios disponibles.',
+      category: 'tickets',
+      location: 'lima',
+      discount: '$5',
+      type: 'ESPECIAL',
+      image: 'special-image'
+    },
+    {
+      id: 6,
+      title: 'Dulcería 2x1',
+      description: 'Promoción válida en productos seleccionados de dulcería.',
+      category: 'food',
+      location: 'callao',
+      discount: '2x1',
+      type: 'DULCERÍA',
+      image: 'snack-image'
+    }
+  ];
+
   const scrollToPromotions = () => {
     const promotionsSection = document.getElementById('promotions');
     if (promotionsSection) {
@@ -10,539 +76,155 @@ export default function Promociones() {
   };
 
   const filterPromotions = () => {
-    const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
-    const locationFilter = document.getElementById('locationFilter')?.value || 'all';
-    const cards = document.querySelectorAll('.promotion-card');
-
-    cards.forEach(card => {
-      const category = card.getAttribute('data-category');
-      const location = card.getAttribute('data-location');
-      const categoryMatch = categoryFilter === 'all' || category === categoryFilter;
-      const locationMatch = locationFilter === 'all' || location === locationFilter;
-
-      card.style.display = categoryMatch && locationMatch ? 'block' : 'none';
-    });
+    // Filtering is done in the rendered output
   };
 
   const showPromotion = (title, description) => {
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-
-    if (modalTitle) modalTitle.textContent = title;
-    if (modalDescription) modalDescription.textContent = description;
-    if (modal) modal.style.display = 'block';
+    setModal({ visible: true, title, description });
   };
 
   const closeModal = () => {
-    const modal = document.getElementById('modal');
-    if (modal) modal.style.display = 'none';
+    setModal({ ...modal, visible: false });
   };
+
+  const handleFilterChange = (e) => {
+    const { id, value } = e.target;
+    setFilters(prev => ({
+      ...prev,
+      [id === 'categoryFilter' ? 'category' : 'location']: value
+    }));
+  };
+
+  const filteredPromotions = promotions.filter(promo => {
+    const categoryMatch = filters.category === 'all' || promo.category === filters.category;
+    const locationMatch = filters.location === 'all' || promo.location === filters.location;
+    return categoryMatch && locationMatch;
+  });
 
   return (
     <>
-    
-
-    <header class="navbar">
-
-        <div class="logo">
-            CINE<span>MAX</span>
-        </div>
-
-        <nav>
-            <a href="#">Cartelera</a>
-            <a href="#">Próximos estrenos</a>
-            <a href="#">Promociones</a>
-            <a href="#">Cines</a>
-        </nav>
-
-        <button class="login-btn">
-            Iniciar sesión
-        </button>
-
-    </header>
-
-
-  
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <span class="tag">PROMOCIONES</span>
-
+      <main className="site-main" style={{ paddingTop: '2rem' }}>
+        <section className="hero">
+          <div className="hero-content">
+            <span className="tag">PROMOCIONES</span>
             <h1>
-                Disfruta más cine<br />
-                por menos
+              Disfruta más cine<br />
+              por menos
             </h1>
-
             <p>
-                Descubre nuestras promociones especiales,
-                descuentos y beneficios exclusivos.
+              Descubre nuestras promociones especiales,
+              descuentos y beneficios exclusivos.
             </p>
-
-            <button class="primary-btn" onclick="scrollToPromotions()">
-                Ver promociones
+            <button className="primary-btn" onClick={scrollToPromotions}>
+              Ver promociones
             </button>
+          </div>
+        </section>
 
-        </div>
-
-    </section>
-
-
-
-    <section class="filters">
-
-        <h2>Encuentra tu promoción</h2>
-
-        <div class="filter-container">
-
-            <select id="categoryFilter" onchange="filterPromotions()">
-
-                <option value="all">
-                    Todas las promociones
-                </option>
-
-                <option value="tickets">
-                    Entradas
-                </option>
-
-                <option value="food">
-                    Alimentos
-                </option>
-
-                <option value="rewards">
-                    Rewards
-                </option>
-
-                <option value="family">
-                    Familia
-                </option>
-
+        <section className="filters">
+          <h2>Encuentra tu promoción</h2>
+          <div className="filter-container">
+            <select id="categoryFilter" value={filters.category} onChange={handleFilterChange}>
+              <option value="all">Todas las promociones</option>
+              <option value="tickets">Entradas</option>
+              <option value="food">Alimentos</option>
+              <option value="rewards">Rewards</option>
+              <option value="family">Familia</option>
             </select>
 
-
-            <select id="locationFilter" onchange="filterPromotions()">
-
-                <option value="all">
-                    Todos los cines
-                </option>
-
-                <option value="lima">
-                    CineMax Lima
-                </option>
-
-                <option value="callao">
-                    CineMax Callao
-                </option>
-
-                <option value="miraflores">
-                    CineMax Miraflores
-                </option>
-
+            <select id="locationFilter" value={filters.location} onChange={handleFilterChange}>
+              <option value="all">Todos los cines</option>
+              <option value="lima">CineMax Lima</option>
+              <option value="callao">CineMax Callao</option>
+              <option value="miraflores">CineMax Miraflores</option>
             </select>
+          </div>
+        </section>
 
-        </div>
-
-    </section>
-
-
-  
-    <main id="promotions" class="promotions-section">
-
-        <div class="section-title">
-
+        <section id="promotions" className="promotions-section">
+          <div className="section-title">
             <div>
-                <span>OFERTAS DESTACADAS</span>
-                <h2>Promociones actuales</h2>
+              <span>OFERTAS DESTACADAS</span>
+              <h2>Promociones actuales</h2>
             </div>
+          </div>
 
-        </div>
-
-
-        <div class="promotion-grid">
-
-
-            
-            <article
-                class="promotion-card"
-                data-category="tickets"
-                data-location="all"
-            >
-
-                <div class="promotion-image ticket-image">
-                    <span class="discount">2x1</span>
+          <div className="promotion-grid">
+            {filteredPromotions.map(promo => (
+              <article
+                key={promo.id}
+                className="promotion-card"
+                data-category={promo.category}
+                data-location={promo.location}
+              >
+                <div className={`promotion-image ${promo.image}`}>
+                  <span className="discount">{promo.discount}</span>
                 </div>
 
-                <div class="promotion-content">
-
-                    <span class="promotion-type">
-                        ENTRADAS
-                    </span>
-
-                    <h3>
-                        Martes de película
-                    </h3>
-
-                    <p>
-                        Compra una entrada y recibe otra
-                        completamente gratis todos los martes.
-                    </p>
-
-                    <button
-                        class="details-btn"
-                        onclick="showPromotion(
-                            'Martes de película',
-                            'Compra una entrada y recibe otra gratis todos los martes.'
-                        )"
-                    >
-                        Ver detalles
-                    </button>
-
+                <div className="promotion-content">
+                  <span className="promotion-type">{promo.type}</span>
+                  <h3>{promo.title}</h3>
+                  <p>{promo.description}</p>
+                  <button
+                    className="details-btn"
+                    onClick={() => showPromotion(promo.title, promo.description)}
+                  >
+                    Ver detalles
+                  </button>
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-            </article>
-
-
-          
-            <article
-                class="promotion-card"
-                data-category="food"
-                data-location="all"
-            >
-
-                <div class="promotion-image food-image">
-                    <span class="discount">
-                        -25%
-                    </span>
-                </div>
-
-                <div class="promotion-content">
-
-                    <span class="promotion-type">
-                        ALIMENTOS
-                    </span>
-
-                    <h3>
-                        Combo de película
-                    </h3>
-
-                    <p>
-                        Disfruta un combo grande de palomitas
-                        y bebida con 25% de descuento.
-                    </p>
-
-                    <button
-                        class="details-btn"
-                        onclick="showPromotion(
-                            'Combo de película',
-                            'Combo grande de palomitas y bebida con 25% de descuento.'
-                        )"
-                    >
-                        Ver detalles
-                    </button>
-
-                </div>
-
-            </article>
-
-
-         
-            <article
-                class="promotion-card"
-                data-category="rewards"
-                data-location="all"
-            >
-
-                <div class="promotion-image rewards-image">
-                    <span class="discount">
-                        REWARDS
-                    </span>
-                </div>
-
-                <div class="promotion-content">
-
-                    <span class="promotion-type">
-                        REWARDS
-                    </span>
-
-                    <h3>
-                        CineMax Rewards
-                    </h3>
-
-                    <p>
-                        Acumula puntos con tus compras y
-                        canjéalos por entradas y productos.
-                    </p>
-
-                    <button
-                        class="details-btn"
-                        onclick="showPromotion(
-                            'CineMax Rewards',
-                            'Acumula puntos con tus compras y canjéalos por diferentes beneficios.'
-                        )"
-                    >
-                        Ver detalles
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            
-            <article
-                class="promotion-card"
-                data-category="family"
-                data-location="all"
-            >
-
-                <div class="promotion-image family-image">
-                    <span class="discount">
-                        FAMILIA
-                    </span>
-                </div>
-
-                <div class="promotion-content">
-
-                    <span class="promotion-type">
-                        FAMILIA
-                    </span>
-
-                    <h3>
-                        Cine en familia
-                    </h3>
-
-                    <p>
-                        Precios especiales para disfrutar
-                        una película con toda la familia.
-                    </p>
-
-                    <button
-                        class="details-btn"
-                        onclick="showPromotion(
-                            'Cine en familia',
-                            'Disfruta precios especiales en funciones familiares seleccionadas.'
-                        )"
-                    >
-                        Ver detalles
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            
-            <article
-                class="promotion-card"
-                data-category="tickets"
-                data-location="lima"
-            >
-
-                <div class="promotion-image special-image">
-                    <span class="discount">
-                        $5
-                    </span>
-                </div>
-
-                <div class="promotion-content">
-
-                    <span class="promotion-type">
-                        ESPECIAL
-                    </span>
-
-                    <h3>
-                        Funciones especiales
-                    </h3>
-
-                    <p>
-                        Disfruta películas seleccionadas a
-                        precio especial.
-                    </p>
-
-                    <button
-                        class="details-btn"
-                        onclick="showPromotion(
-                            'Funciones especiales',
-                            'Consulta las películas participantes y horarios disponibles.'
-                        )"
-                    >
-                        Ver detalles
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            
-            <article
-                class="promotion-card"
-                data-category="food"
-                data-location="callao"
-            >
-
-                <div class="promotion-image snack-image">
-                    <span class="discount">
-                        2x1
-                    </span>
-                </div>
-
-                <div class="promotion-content">
-
-                    <span class="promotion-type">
-                        DULCERÍA
-                    </span>
-
-                    <h3>
-                        Dulcería 2x1
-                    </h3>
-
-                    <p>
-                        Lleva dos productos seleccionados
-                        pagando solamente uno.
-                    </p>
-
-                    <button
-                        class="details-btn"
-                        onclick="showPromotion(
-                            'Dulcería 2x1',
-                            'Promoción válida en productos seleccionados de dulcería.'
-                        )"
-                    >
-                        Ver detalles
-                    </button>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </main>
-
-
-    
-    <section class="rewards">
-
-        <div class="rewards-content">
-
+        <section className="rewards">
+          <div className="rewards-content">
             <span>ÚNETE A NUESTRO PROGRAMA</span>
-
-            <h2>
-                Cada visita puede darte
-                una recompensa
-            </h2>
-
+            <h2>Cada visita puede darte una recompensa</h2>
             <p>
-                Regístrate gratis, acumula puntos y
-                disfruta beneficios exclusivos.
+              Regístrate gratis, acumula puntos y
+              disfruta beneficios exclusivos.
             </p>
+            <button className="primary-btn">Crear cuenta</button>
+          </div>
 
-            <button class="primary-btn">
-                Crear cuenta
-            </button>
+          <div className="rewards-card">
+            <div className="star">★</div>
+            <h3>CineMax Rewards</h3>
+            <p>Puntos por tus compras</p>
+            <strong>+ BENEFICIOS</strong>
+          </div>
+        </section>
+      </main>
 
-        </div>
-
-        <div class="rewards-card">
-
-            <div class="star">
-                ★
+      {modal.visible && (
+        <div className="modal" style={{ display: 'block' }}>
+          <div className="modal-content">
+            <button className="close" onClick={closeModal}>×</button>
+            <span>PROMOCIÓN</span>
+            <h2>{modal.title}</h2>
+            <p>{modal.description}</p>
+            <div className="terms">
+              <strong>Términos y condiciones</strong>
+              <p>
+                Promoción sujeta a disponibilidad.
+                Aplican restricciones. Consulta las
+                condiciones vigentes en tu cine.
+              </p>
             </div>
-
-            <h3>
-                CineMax Rewards
-            </h3>
-
-            <p>
-                Puntos por tus compras
-            </p>
-
-            <strong>
-                + BENEFICIOS
-            </strong>
-
-        </div>
-
-    </section>
-
-
-   
-    <div id="modal" class="modal">
-
-        <div class="modal-content">
-
-            <button
-                class="close"
-                onclick="closeModal()"
-            >
-                ×
+            <button className="primary-btn" onClick={closeModal}>
+              Entendido
             </button>
-
-            <span>
-                PROMOCIÓN
-            </span>
-
-            <h2 id="modalTitle">
-                Promoción
-            </h2>
-
-            <p id="modalDescription">
-                Descripción
-            </p>
-
-            <div class="terms">
-
-                <strong>
-                    Términos y condiciones
-                </strong>
-
-                <p>
-                    Promoción sujeta a disponibilidad.
-                    Aplican restricciones. Consulta las
-                    condiciones vigentes en tu cine.
-                </p>
-
-            </div>
-
-            <button
-                class="primary-btn"
-                onclick="closeModal()"
-            >
-                Entendido
-            </button>
-
+          </div>
         </div>
+      )}
 
-    </div>
-
-
-    <footer>
-
-        <div class="footer-logo">
-            CINE<span>MAX</span>
+      <footer className="site-footer">
+        <div className="container footer-inner">
+          <div className="footer-brand">Cinemas</div>
+          <div className="footer-copy">© {new Date().getFullYear()} Cinemas. Todos los derechos reservados.</div>
         </div>
-
-        <div class="footer-links">
-
-            <a href="#">Términos y condiciones</a>
-            <a href="#">Privacidad</a>
-            <a href="#">Ayuda</a>
-            <a href="#">Contacto</a>
-
-        </div>
-
-        <p>
-            © 2026 CineMax. Todos los derechos reservados.
-        </p>
-
-    </footer>
-
-
-    <script src="promociones.js"></script>
-
+      </footer>
     </>
   );
 }
-
