@@ -34,9 +34,9 @@ export default function Cabecera() {
               <span className="ubicacion-text">SELECCIONE UNA UBICACIÓN</span>
             </button>
             <div className="ubicacion-dropdown" role="menu">
-              <a href="#" role="menuitem">Ciudad A</a>
-              <a href="#" role="menuitem">Ciudad B</a>
-              <a href="#" role="menuitem">Ciudad C</a>
+              <button type="button" role="menuitem" className="ubicacion-item">Ciudad A</button>
+              <button type="button" role="menuitem" className="ubicacion-item">Ciudad B</button>
+              <button type="button" role="menuitem" className="ubicacion-item">Ciudad C</button>
             </div>
           </div>
         </div>

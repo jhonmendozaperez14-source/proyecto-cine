@@ -75,9 +75,6 @@ export default function Promociones() {
     }
   };
 
-  const filterPromotions = () => {
-    // Filtering is done in the rendered output
-  };
 
   const showPromotion = (title, description) => {
     setModal({ visible: true, title, description });
