@@ -1,0 +1,75 @@
+:root {
+  --color-rojo: #e51c23;
+  --color-rojo-oscuro: #d01812;
+  --color-borde: #ddd;
+  --color-borde-suave: #ccc;
+  --color-texto: #222;
+  --color-blanco: #fff;
+  --radio-boton: 4px;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--radio-boton);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.boton:hover {
+  transform: translateY(-1px);
+}
+
+.boton-primario {
+  background: var(--color-rojo);
+  color: var(--color-blanco);
+  border-color: var(--color-rojo);
+}
+
+.boton-primario:hover {
+  background: var(--color-rojo-oscuro);
+  border-color: var(--color-rojo-oscuro);
+}
+
+.boton-borde {
+  background: transparent;
+  color: var(--color-texto);
+  border-color: var(--color-borde-suave);
+}
+
+.boton-banner {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.boton-banner-primario {
+  background: linear-gradient(90deg, #ff8c4b, #ffa66a);
+  color: #fff;
+  border-color: transparent;
+}
+
+.boton-banner-primario:hover {
+  background: linear-gradient(90deg, #ff7f39, #ff9b5d);
+}
+
+.boton-banner-borde {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.boton-pequeno {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.boton-normal {
+  padding: 8px 14px;
+  font-size: 13px;
+}

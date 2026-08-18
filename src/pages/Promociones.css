@@ -275,67 +275,11 @@ select {
 
 .promotion-image {
     height: 210px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     position: relative;
-}
-
-.ticket-image {
-    background:
-        linear-gradient(
-            135deg,
-            #9b111e,
-            #270006
-        );
-}
-
-.food-image {
-    background:
-        linear-gradient(
-            135deg,
-            #e07b00,
-            #4d1d00
-        );
-}
-
-.rewards-image {
-    background:
-        linear-gradient(
-            135deg,
-            #5b1fa8,
-            #18052e
-        );
-}
-
-.family-image {
-    background:
-        linear-gradient(
-            135deg,
-            #147d91,
-            #06252d
-        );
-}
-
-.special-image {
-    background:
-        linear-gradient(
-            135deg,
-            #555,
-            #111
-        );
-}
-
-.snack-image {
-    background:
-        linear-gradient(
-            135deg,
-            #b51c30,
-            #3d050c
-        );
+    background: linear-gradient(135deg, #9b111e, #270006);
 }
 
 .discount {

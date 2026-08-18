@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Tarjeta from './Tarjeta';
 import '../estilos-css/tarjetas.css';
 
-const sampleMovies = [
+const peliculasEjemplo = [
   { id: 1, title: 'Spider-Man: Un nuevo día', img: '/imagenes/spiderman-tar.jpg' },
   { id: 2, title: 'Paw Patrol: The Dino Movie', img: 'imagenes/paw-patrol.jpg' },
   { id: 3, title: 'El final de Oak Street', img: 'imagenes/final-Street.jpg' },
@@ -12,28 +12,26 @@ const sampleMovies = [
 ];
 
 export default function Tarjetas() {
-  const rowRef = useRef(null);
+  const filaRef = useRef(null);
 
-  function scrollLeft() {
-    if (!rowRef.current) return;
-    rowRef.current.scrollBy({ left: -360, behavior: 'smooth' });
-  }
-  function scrollRight() {
-    if (!rowRef.current) return;
-    rowRef.current.scrollBy({ left: 360, behavior: 'smooth' });
-  }
+  const desplazarCarrusel = (direccion) => {
+    if (!filaRef.current) return;
+    filaRef.current.scrollBy({ left: direccion * 360, behavior: 'smooth' });
+  };
 
   return (
-    <div className="tarjetas-wrapper">
-      <button className="scroll-btn left" onClick={scrollLeft} aria-label="Anterior">‹</button>
-      <div className="tarjetas-row" ref={rowRef}>
-        {sampleMovies.map(m => (
-          <div className="tarjeta-item" key={m.id}>
-            <Tarjeta title={m.title} img={m.img} />
+    <div className="contenedor-tarjetas">
+      <button className="flecha-tarjeta izquierda" onClick={() => desplazarCarrusel(-1)} aria-label="Anterior">‹</button>
+
+      <div className="fila-tarjetas" ref={filaRef}>
+        {peliculasEjemplo.map((pelicula) => (
+          <div className="item-tarjeta" key={pelicula.id}>
+            <Tarjeta title={pelicula.title} img={pelicula.img} />
           </div>
         ))}
       </div>
-      <button className="scroll-btn right" onClick={scrollRight} aria-label="Siguiente">›</button>
+
+      <button className="flecha-tarjeta derecha" onClick={() => desplazarCarrusel(1)} aria-label="Siguiente">›</button>
     </div>
   );
 }

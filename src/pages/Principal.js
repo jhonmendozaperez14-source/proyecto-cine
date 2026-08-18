@@ -8,7 +8,7 @@ export default function Principal() {
     <div className="site">
       <main className="site-main">
         <Banner />
-        <section className="container">
+        <section className="section-pelicula container">
           <h2 className="section-title">Cartelera</h2>
           <Tarjetas />
         </section>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Boton from './Boton';
 import '../estilos-css/banner.css';
 
 const slides = [
@@ -12,7 +13,6 @@ export default function Banner() {
   const timeoutRef = useRef(null);
 
   useEffect(() => {
-    // auto-advance every 5s
     timeoutRef.current = setTimeout(() => {
       setIndex((prev) => (prev + 1) % slides.length);
     }, 5000);
@@ -22,6 +22,7 @@ export default function Banner() {
   function goPrev() {
     setIndex((i) => (i - 1 + slides.length) % slides.length);
   }
+
   function goNext() {
     setIndex((i) => (i + 1) % slides.length);
   }
@@ -41,8 +42,8 @@ export default function Banner() {
                 <h1 className="banner-title">{s.title}</h1>
                 <p className="banner-sub">Compra tus boletos fácilmente y disfruta la experiencia</p>
                 <div className="banner-ctas">
-                  <a className="btn btn-primary" href="#cartelera">Entradas</a>
-                  <a className="btn btn-outline" href="#promos">Promociones</a>
+                  <Boton href="#cartelera" variante="primario" className="boton-banner boton-banner-primario">Entradas</Boton>
+                  <Boton href="#promos" variante="borde" className="boton-banner boton-banner-borde">Promociones</Boton>
                 </div>
               </div>
             </div>
@@ -54,7 +55,7 @@ export default function Banner() {
 
         <div className="carousel-indicators">
           {slides.map((_, i) => (
-            <button key={i} className={`indicator ${i === index ? 'active' : ''}`} onClick={() => setIndex(i)} aria-label={`Ir a diapositiva ${i+1}`} />
+            <button key={i} className={`indicator ${i === index ? 'active' : ''}`} onClick={() => setIndex(i)} aria-label={`Ir a diapositiva ${i + 1}`} />
           ))}
         </div>
       </div>

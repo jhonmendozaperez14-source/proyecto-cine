@@ -1,21 +1,23 @@
 import React from 'react';
+import Boton from './Boton';
 import '../estilos-css/tarjeta.css';
 
 export default function Tarjeta({ title, img }) {
   return (
-    <article className="movie-card">
-      <div className="movie-poster">
+    <article className="tarjeta-pelicula">
+      <div className="poster-pelicula">
         <img src={img} alt={title} />
-        <div className="movie-overlay">
-          <div className="overlay-title">{title}</div>
-          <a className="btn btn-primary" href="#funciones">Ver funciones</a>
+        <div className="superposicion-pelicula">
+          <div className="titulo-superposicion">{title}</div>
+          <Boton href="#funciones" variante="primario" tamano="normal">Ver funciones</Boton>
         </div>
       </div>
-      <div className="movie-info">
-        <h3 className="movie-title">{title}</h3>
-        <div className="movie-actions">
-          <button className="btn btn-small">Funciones</button>
-          <button className="btn btn-small btn-outline">Detalles</button>
+
+      <div className="info-pelicula">
+        <h3 className="titulo-pelicula">{title}</h3>
+        <div className="acciones-pelicula">
+          <Boton variante="primario" tamano="pequeno">Funciones</Boton>
+          <Boton variante="borde" tamano="pequeno">Detalles</Boton>
         </div>
       </div>
     </article>

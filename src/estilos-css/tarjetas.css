@@ -1,14 +1,16 @@
-/* Horizontal tarjetas row */
-.tarjetas-wrapper {
+/* Carrusel horizontal de películas */
+.contenedor-tarjetas {
   position: relative;
-  margin: 28px 0;
-  padding: 0 30px;
+  max-width: 100%;
+  margin: 0 auto 28px;
+  padding: 0 26px;
   overflow: visible;
 }
 
-.tarjetas-row {
+.fila-tarjetas {
   display: flex;
   gap: 14px;
+  width: 100%;
   overflow-x: auto;
   padding: 15px 0;
   scroll-behavior: smooth;
@@ -17,62 +19,70 @@
   z-index: 1;
 }
 
-.tarjeta-item {
-  min-width: 280px;
-  flex: 0 0 280px;
+.item-tarjeta {
+  min-width: 240px;
+  flex: 0 0 240px;
 }
 
-.scroll-btn {
+.flecha-tarjeta {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(90deg, rgba(7, 19, 42, 0.9), rgba(7, 19, 42, 0.6));
+  background: rgba(20, 28, 38, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #fff;
-  border: none;
-  width: 40px;
-  height: 60px;
-  border-radius: 6px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 24px;
-  z-index: 3;
+  font-size: 22px;
+  line-height: 1;
+  z-index: 5;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.scroll-btn.left {
-  left: 0;
+.flecha-tarjeta:hover {
+  background: rgba(11, 17, 29, 0.9);
 }
 
-.scroll-btn.right {
-  right: 0;
+.flecha-tarjeta.izquierda {
+  left: -8px;
 }
 
-.scroll-btn:focus {
+.flecha-tarjeta.derecha {
+  right: -8px;
+}
+
+.flecha-tarjeta:focus {
   outline: 2px solid rgba(255, 255, 255, 0.12);
 }
 
-.tarjetas-row::-webkit-scrollbar {
+.fila-tarjetas::-webkit-scrollbar {
   height: 10px;
 }
 
-.tarjetas-row::-webkit-scrollbar-thumb {
+.fila-tarjetas::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 
 @media (max-width: 720px) {
-  .tarjeta-item {
-    min-width: 160px;
-    flex: 0 0 160px;
+  .item-tarjeta {
+    min-width: 180px;
+    flex: 0 0 180px;
   }
 
-  .scroll-btn {
-    width: 36px;
-    height: 56px;
+  .flecha-tarjeta {
+    width: 34px;
+    height: 60px;
     font-size: 22px;
   }
 
-  .tarjetas-wrapper {
-    padding: 0 34px;
+  .contenedor-tarjetas {
+    padding: 0 30px;
     margin: 20px 0;
   }
 }
