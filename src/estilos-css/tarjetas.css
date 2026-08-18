@@ -1,26 +1,25 @@
 /* Horizontal tarjetas row */
 .tarjetas-wrapper {
   position: relative;
-  margin: 18px 0;
-  padding: 0 42px;
+  margin: 28px 0;
+  padding: 0 30px;
   overflow: visible;
 }
 
 .tarjetas-row {
   display: flex;
-  gap: 20px;
+  gap: 14px;
   overflow-x: auto;
-  padding: 12px 0;
+  padding: 15px 0;
   scroll-behavior: smooth;
   align-items: flex-start;
   position: relative;
   z-index: 1;
 }
 
-/* aumentar ancho minimo para que posters mantengan proporciones y sean consistentes */
 .tarjeta-item {
-  min-width: 240px;
-  flex: 0 0 240px;
+  min-width: 280px;
+  flex: 0 0 280px;
 }
 
 .scroll-btn {
@@ -30,11 +29,11 @@
   background: linear-gradient(90deg, rgba(7, 19, 42, 0.9), rgba(7, 19, 42, 0.6));
   color: #fff;
   border: none;
-  width: 44px;
-  height: 64px;
-  border-radius: 8px;
+  width: 40px;
+  height: 60px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 24px;
   z-index: 3;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
@@ -51,7 +50,6 @@
   outline: 2px solid rgba(255, 255, 255, 0.12);
 }
 
-/* hide default scrollbar in modern browsers */
 .tarjetas-row::-webkit-scrollbar {
   height: 10px;
 }
@@ -70,9 +68,11 @@
   .scroll-btn {
     width: 36px;
     height: 56px;
+    font-size: 22px;
   }
 
   .tarjetas-wrapper {
     padding: 0 34px;
+    margin: 20px 0;
   }
 }

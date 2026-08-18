@@ -9,11 +9,13 @@
 }
 
 .slide {
-  min-height: 360px;
-  background-size: cover;
-  background-position: center;
-  display: none;
-  padding: 56px 0;
+ position: relative;
+ min-height: 520px;
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ display: none;
+ padding: 0;
 }
 
 .slide.active {
@@ -23,18 +25,25 @@
 .slide .banner-inner {
   display: flex;
   align-items: center;
-  min-height: 360px;
+  min-height: 520px;
+  position: relative;
+  padding-left: 60px;
 }
 
 .banner-text {
   color: #fff;
-  max-width: 680px;
+  max-width: 720px;
+  z-index: 2;
+  padding-left: 12px;
 }
 
 .banner-title {
-  font-size: 36px;
+  font-size: 56px;
   margin: 0 0 10px;
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 2px;
+  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.6);
 }
 
 .banner-sub {
@@ -59,6 +68,7 @@
   border-radius: 8px;
   font-size: 26px;
   cursor: pointer;
+  z-index: 3;
 }
 
 .carousel-control.prev {
@@ -94,6 +104,14 @@
   background: #ff8c4b;
 }
 
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 100%);
+  z-index: 1;
+}
+
 /* Buttons */
 .btn-primary {
   background: linear-gradient(90deg, #ff8c4b, #ffa66a);
@@ -115,11 +133,11 @@
 
 @media (max-width: 720px) {
   .slide {
-    min-height: 220px;
+    min-height: 320px;
   }
 
   .banner-title {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .carousel-control {
