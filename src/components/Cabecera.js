@@ -68,6 +68,7 @@ export default function Cabecera() {
         <nav ref={navRef} className="nav-secundaria">
           <div className="nav-item"><a href="#peliculas">PELÍCULAS</a></div>
           <div className="nav-item"><a href="#menu">MENÚ</a></div>
+          
           <div className="nav-item">
             <a href="#eventos">EVENTOS ▾</a>
             <div className="submenu">

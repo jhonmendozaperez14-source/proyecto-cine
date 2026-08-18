@@ -1,16 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineMax - Promociones</title>
+import React from 'react';
+import './Promociones.css';
 
-    <link rel="stylesheet" href="Promociones.css">
-</head>
+export default function Promociones() {
+  const scrollToPromotions = () => {
+    const promotionsSection = document.getElementById('promotions');
+    if (promotionsSection) {
+      promotionsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-<body>
+  const filterPromotions = () => {
+    const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
+    const locationFilter = document.getElementById('locationFilter')?.value || 'all';
+    const cards = document.querySelectorAll('.promotion-card');
 
-    <!-- NAVBAR -->
+    cards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      const location = card.getAttribute('data-location');
+      const categoryMatch = categoryFilter === 'all' || category === categoryFilter;
+      const locationMatch = locationFilter === 'all' || location === locationFilter;
+
+      card.style.display = categoryMatch && locationMatch ? 'block' : 'none';
+    });
+  };
+
+  const showPromotion = (title, description) => {
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (modalDescription) modalDescription.textContent = description;
+    if (modal) modal.style.display = 'block';
+  };
+
+  const closeModal = () => {
+    const modal = document.getElementById('modal');
+    if (modal) modal.style.display = 'none';
+  };
+
+  return (
+    <>
+    
+
     <header class="navbar">
 
         <div class="logo">
@@ -31,7 +63,7 @@
     </header>
 
 
-    <!-- HERO -->
+  
     <section class="hero">
 
         <div class="hero-content">
@@ -39,7 +71,7 @@
             <span class="tag">PROMOCIONES</span>
 
             <h1>
-                Disfruta más cine<br>
+                Disfruta más cine<br />
                 por menos
             </h1>
 
@@ -57,7 +89,7 @@
     </section>
 
 
-    <!-- FILTROS -->
+
     <section class="filters">
 
         <h2>Encuentra tu promoción</h2>
@@ -114,7 +146,7 @@
     </section>
 
 
-    <!-- PROMOCIONES -->
+  
     <main id="promotions" class="promotions-section">
 
         <div class="section-title">
@@ -130,7 +162,7 @@
         <div class="promotion-grid">
 
 
-            <!-- PROMOCIÓN 1 -->
+            
             <article
                 class="promotion-card"
                 data-category="tickets"
@@ -171,7 +203,7 @@
             </article>
 
 
-            <!-- PROMOCIÓN 2 -->
+          
             <article
                 class="promotion-card"
                 data-category="food"
@@ -214,7 +246,7 @@
             </article>
 
 
-            <!-- PROMOCIÓN 3 -->
+         
             <article
                 class="promotion-card"
                 data-category="rewards"
@@ -257,7 +289,7 @@
             </article>
 
 
-            <!-- PROMOCIÓN 4 -->
+            
             <article
                 class="promotion-card"
                 data-category="family"
@@ -300,7 +332,7 @@
             </article>
 
 
-            <!-- PROMOCIÓN 5 -->
+            
             <article
                 class="promotion-card"
                 data-category="tickets"
@@ -343,7 +375,7 @@
             </article>
 
 
-            <!-- PROMOCIÓN 6 -->
+            
             <article
                 class="promotion-card"
                 data-category="food"
@@ -390,7 +422,7 @@
     </main>
 
 
-    <!-- REWARDS -->
+    
     <section class="rewards">
 
         <div class="rewards-content">
@@ -436,7 +468,7 @@
     </section>
 
 
-    <!-- MODAL -->
+   
     <div id="modal" class="modal">
 
         <div class="modal-content">
@@ -486,7 +518,6 @@
     </div>
 
 
-    <!-- FOOTER -->
     <footer>
 
         <div class="footer-logo">
@@ -511,5 +542,7 @@
 
     <script src="promociones.js"></script>
 
-</body>
-</html>
+    </>
+  );
+}
+
