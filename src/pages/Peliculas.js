@@ -95,7 +95,7 @@ export default function Peliculas({ mostrarCabecera = true }) {
                   </p>
                 </div>
 
-                <button className="pelicula-cta" type="button" onClick={() => navigate('/boleteria', { state: { movieId: pelicula.id } })}>{pelicula.btn}</button>
+                <button className="pelicula-cta" type="button" onClick={() => navigate('/boleteria', { state: { movieTitle: pelicula.title } })}>{pelicula.btn}</button>
               </div>
 
               <div className="card-bottom">

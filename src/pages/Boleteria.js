@@ -21,8 +21,17 @@ export default function Boleteria() {
   const incoming = (location && location.state) || {};
 
   const initialSucursal = sucursales[0].id;
-  const initialPelicula = incoming.movieId || peliculasEjemplo[0].id;
   const initialHora = horarios[0];
+
+  // determine initial pelicula id: support incoming.movieId or incoming.movieTitle
+  const initialPelicula = (() => {
+    if (incoming.movieId) return incoming.movieId;
+    if (incoming.movieTitle) {
+      const found = peliculasEjemplo.find((p) => p.title === incoming.movieTitle);
+      if (found) return found.id;
+    }
+    return peliculasEjemplo[0].id;
+  })();
 
   const [sucursal, setSucursal] = useState(initialSucursal);
   const [pelicula, setPelicula] = useState(initialPelicula);

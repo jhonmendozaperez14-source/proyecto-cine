@@ -6,7 +6,7 @@ export default function Tarjeta({ title, img, id }) {
   const navigate = useNavigate();
 
   function openFunciones() {
-    navigate('/boleteria', { state: { movieId: id } });
+    navigate('/boleteria', { state: { movieTitle: title } });
   }
 
   return (
