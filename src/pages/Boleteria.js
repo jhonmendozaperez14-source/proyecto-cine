@@ -117,17 +117,47 @@ export default function Boleteria() {
               <div className="ticket-right">
                 <h2>Entrada</h2>
                 <p className="ticket-id">#{ticket.id}</p>
-                <p><strong>{ticket.pelicula}</strong></p>
-                <p>{ticket.sucursal} — {ticket.hora}</p>
-                <p>Cantidad: {ticket.cantidad}</p>
-                <p className="ticket-total">Total: S/ {ticket.total}</p>
 
-                <div className="ticket-actions">
-                  <button onClick={closeTicket} className="ticket-close">Cerrar</button>
-                  <button onClick={() => window.print()} className="ticket-print">Imprimir</button>
-                </div>
-              </div>
-            </div>
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Película</div>
+                          <div className="ticket-detail-value"><strong>{ticket.pelicula}</strong></div>
+                        </div>
+
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Sucursal</div>
+                          <div className="ticket-detail-value">{ticket.sucursal}</div>
+                        </div>
+
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Horario</div>
+                          <div className="ticket-detail-value">{ticket.hora}</div>
+                        </div>
+
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Cantidad</div>
+                          <div className="ticket-detail-value">{ticket.cantidad}</div>
+                        </div>
+
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Precio unitario</div>
+                          <div className="ticket-detail-value">S/ {Math.round((ticket.total / ticket.cantidad) * 100) / 100}</div>
+                        </div>
+
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Total</div>
+                          <div className="ticket-detail-value ticket-total">S/ {ticket.total}</div>
+                        </div>
+
+                        <div className="ticket-detail-row">
+                          <div className="ticket-detail-label">Asiento</div>
+                          <div className="ticket-detail-value">General</div>
+                        </div>
+
+                        <div className="ticket-actions">
+                          <button onClick={closeTicket} className="ticket-close">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
           </div>
         )}
       </div>
