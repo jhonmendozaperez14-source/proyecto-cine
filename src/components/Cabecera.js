@@ -56,11 +56,6 @@ export default function Cabecera() {
           <div className="nav-item"><Link to="/menu">MENÚ</Link></div>
           <div className="nav-item"><Link to="/promociones">PROMOCIONES</Link></div>
           <div className="nav-item">
-            <a href="#eventos">EVENTOS ▾</a>
-            <div className="submenu">
-              <a href="#eventos-corporativos">Corporativos</a>
-              <a href="#eventos-especiales">Especiales</a>
-            </div>
           </div>
 
           <div className={`nav-item ${menuAbierto === 'mas' ? 'open' : ''}`}>
@@ -69,7 +64,6 @@ export default function Cabecera() {
             </button>
             <div className={`submenu ${menuAbierto === 'mas' ? 'open' : ''}`}>
               <a href="#sucursales">Sucursales</a>
-              <a href="#contacto">Contacto</a>
             </div>
           </div>
         </nav>
