@@ -9,7 +9,7 @@ export default function Tarjeta({ title, img }) {
         <img src={img} alt={title} />
         <div className="superposicion-pelicula">
           <div className="titulo-superposicion">{title}</div>
-          <Boton href="#funciones" variante="primario" tamano="normal">Ver funciones</Boton>
+          <Boton href="/boleteria" variante="primario" tamano="normal">Ver funciones</Boton>
         </div>
       </div>
 

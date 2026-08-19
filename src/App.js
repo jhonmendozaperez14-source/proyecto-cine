@@ -6,6 +6,7 @@ import Menu from './pages/Menu';
 import Promociones from './pages/Promociones.jsx';
 import Formulario from './pages/Formulario';
 import HojaRegistro from './pages/Hoja_Registro';
+import Boleteria from './pages/Boleteria';
 import Cabecera from './components/Cabecera';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Principal />} />
         <Route path="/peliculas" element={<Peliculas />} />
         <Route path="/menu" element={<Menu />} />
+        <Route path="/boleteria" element={<Boleteria />} />
         <Route path="/promociones" element={<Promociones />} />
         <Route path="/formulario" element={<Formulario />} />
         <Route path="/hoja-registro" element={<HojaRegistro />} />

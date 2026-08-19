@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../estilos-css/boton.css';
 
 export default function Boton({
@@ -20,6 +21,15 @@ export default function Boton({
     .join(' ');
 
   if (href) {
+    // Use react-router Link for internal routes (starting with '/') to avoid full page reload
+    if (href.startsWith('/')) {
+      return (
+        <Link className={clases} to={href} {...props}>
+          {children}
+        </Link>
+      );
+    }
+
     return (
       <a className={clases} href={href} {...props}>
         {children}

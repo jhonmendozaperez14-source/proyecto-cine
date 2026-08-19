@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import '../estilos-css/peliculas.css';
+import Boton from '../components/Boton';
 
 const peliculas = [
   {
@@ -92,9 +93,7 @@ export default function Peliculas({ mostrarCabecera = true }) {
                   </p>
                 </div>
 
-                <button className="pelicula-cta" type="button">
-                  {pelicula.btn}
-                </button>
+                <Boton href="/boleteria" className="pelicula-cta" variante="primario">{pelicula.btn}</Boton>
               </div>
 
               <div className="card-bottom">

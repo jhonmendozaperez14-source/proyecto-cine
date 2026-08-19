@@ -42,7 +42,7 @@ export default function Banner() {
                 <h1 className="banner-title">{s.title}</h1>
                 <p className="banner-sub">Compra tus boletos fácilmente y disfruta la experiencia</p>
                 <div className="banner-ctas">
-                  <Boton href="#cartelera" variante="primario" className="boton-banner boton-banner-primario">Entradas</Boton>
+                  <Boton href="/boleteria" variante="primario" className="boton-banner boton-banner-primario">Entradas</Boton>
                   <Boton href="#promos" variante="borde" className="boton-banner boton-banner-borde">Promociones</Boton>
                 </div>
               </div>
