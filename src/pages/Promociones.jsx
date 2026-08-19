@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Promociones.css';
 
 const categoryOptions = [
@@ -99,6 +100,7 @@ function PromotionCard({ promo, onOpen }) {
 }
 
 export default function Promociones() {
+  const navigate = useNavigate();
   const [modal, setModal] = useState({ visible: false, title: '', description: '' });
   const [filters, setFilters] = useState({ category: 'all', location: 'all' });
 
@@ -191,7 +193,9 @@ export default function Promociones() {
               Regístrate gratis, acumula puntos y
               disfruta beneficios exclusivos.
             </p>
-            <button className="primary-btn">Crear cuenta</button>
+            <button className="primary-btn" onClick={() => navigate('/formulario')}>
+              Crear cuenta
+            </button>
           </div>
 
           <div className="rewards-card">
