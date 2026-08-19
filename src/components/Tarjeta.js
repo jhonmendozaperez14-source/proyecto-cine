@@ -6,12 +6,13 @@ export default function Tarjeta({ title, img, id }) {
   const navigate = useNavigate();
 
   function openFunciones() {
-    navigate('/boleteria', { state: { movieTitle: title } });
+    navigate('/boleteria', { state: { movieId: id } });
   }
 
   return (
     <article className="tarjeta-pelicula">
       <div className="poster-pelicula">
+        {/* Aquí  renderiza la imagen que llega en la prop 'img' */}
         <img src={img} alt={title} />
         <div className="superposicion-pelicula">
           <div className="titulo-superposicion">{title}</div>

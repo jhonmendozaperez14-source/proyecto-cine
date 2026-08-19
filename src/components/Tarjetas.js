@@ -1,15 +1,7 @@
 import React, { useRef } from 'react';
 import Tarjeta from './Tarjeta';
 import '../estilos-css/tarjetas.css';
-
-const peliculasEjemplo = [
-  { id: 1, title: 'Spider-Man: Un nuevo día', img: '/imagenes/spiderman-tar.jpg' },
-  { id: 2, title: 'Paw Patrol: The Dino Movie', img: 'imagenes/paw-patrol.jpg' },
-  { id: 3, title: 'El final de Oak Street', img: 'imagenes/final-Street.jpg' },
-  { id: 4, title: 'La odisea', img: 'imagenes/odicea-tar.jpg' },
-  { id: 5, title: 'Sólo una noche', img: 'imagenes/solouna-noche.jpg' },
-  { id: 6, title: 'El borde', img: 'imagenes/border.jpg' }
-];
+import peliculas from '../peliculasData';
 
 export default function Tarjetas() {
   const filaRef = useRef(null);
@@ -24,9 +16,10 @@ export default function Tarjetas() {
       <button className="flecha-tarjeta izquierda" onClick={() => desplazarCarrusel(-1)} aria-label="Anterior">‹</button>
 
       <div className="fila-tarjetas" ref={filaRef}>
-        {peliculasEjemplo.map((pelicula) => (
+        {peliculas.slice(0,6).map((pelicula) => (
           <div className="item-tarjeta" key={pelicula.id}>
-            <Tarjeta id={pelicula.id} title={pelicula.title} img={pelicula.img} />
+            {/* Pasar imagen a Tarjeta: la prop 'img' recibe pelicula.image desde peliculasData */}
+            <Tarjeta id={pelicula.id} title={pelicula.title} img={pelicula.image} />
           </div>
         ))}
       </div>

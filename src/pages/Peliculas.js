@@ -3,56 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../estilos-css/peliculas.css';
 import Boton from '../components/Boton';
 
-const peliculas = [
-  {
-    id: 1,
-    title: 'La odisea',
-    rating: 'PG',
-    genero: 'Acción',
-    image: '/imagenes/odicea.jpg',
-    btn: 'ENTRADAS'
-  },
-  {
-    id: 2,
-    title: 'Sólo una noche',
-    rating: 'R',
-    genero: 'Comedia',
-    image: '/imagenes/avenger.jpg',
-    btn: 'ENTRADAS'
-  },
-  {
-    id: 3,
-    title: 'El borde de la guerra',
-    rating: 'PG',
-    genero: 'Drama',
-    image: '/imagenes/spider-man.jpg',
-    btn: 'ENTRADAS'
-  },
-  {
-    id: 4,
-    title: 'La odisea',
-    rating: 'PG',
-    genero: 'Acción',
-    image: '/imagenes/odicea.jpg',
-    btn: 'ENTRADAS'
-  },
-  {
-    id: 5,
-    title: 'Sólo una noche',
-    rating: 'R',
-    genero: 'Comedia',
-    image: '/imagenes/avenger.jpg',
-    btn: 'ENTRADAS'
-  },
-  {
-    id: 6,
-    title: 'El borde de la guerra',
-    rating: 'PG',
-    genero: 'Drama',
-    image: '/imagenes/spider-man.jpg',
-    btn: 'ENTRADAS'
-  }
-];
+import peliculas from '../peliculasData';
 
 export default function Peliculas({ mostrarCabecera = true }) {
   const peliculasRef = useRef(null);
@@ -82,6 +33,7 @@ export default function Peliculas({ mostrarCabecera = true }) {
               </div>
 
               <div className="pelicula-poster">
+                {/* Mostrar imagen de la película desde peliculasData: pelicula.image */}
                 <img src={pelicula.image} alt={pelicula.title} />
               </div>
 
@@ -95,7 +47,8 @@ export default function Peliculas({ mostrarCabecera = true }) {
                   </p>
                 </div>
 
-                <button className="pelicula-cta" type="button" onClick={() => navigate('/boleteria', { state: { movieTitle: pelicula.title } })}>{pelicula.btn}</button>
+                {/* Navegar a boletería pasando el id de la película en state (movieId) */}
+                <button className="pelicula-cta" type="button" onClick={() => navigate('/boleteria', { state: { movieId: pelicula.id } })}>{pelicula.btn}</button>
               </div>
 
               <div className="card-bottom">

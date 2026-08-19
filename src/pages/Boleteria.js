@@ -2,17 +2,10 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../estilos-css/boleteria.css';
 
-const sucursales = [
-  { id: 's1', name: 'Centro Comercial A' },
-  { id: 's2', name: 'Plaza Norte' },
-  { id: 's3', name: 'Mall Sur' }
-];
+import cines from '../cinesData';
+import peliculas from '../peliculasData';
 
-const peliculasEjemplo = [
-  { id: 'p1', title: 'La odisea', basePrice: 18, img: '/imagenes/odicea.jpg' },
-  { id: 'p2', title: 'Sólo una noche', basePrice: 22, img: '/imagenes/avenger.jpg' },
-  { id: 'p3', title: 'El borde de la guerra', basePrice: 20, img: '/imagenes/spider-man.jpg' }
-];
+const sucursales = cines; // usa cinemas data
 
 const horarios = ['12:00', '15:30', '18:45', '21:00'];
 
@@ -27,10 +20,10 @@ export default function Boleteria() {
   const initialPelicula = (() => {
     if (incoming.movieId) return incoming.movieId;
     if (incoming.movieTitle) {
-      const found = peliculasEjemplo.find((p) => p.title === incoming.movieTitle);
+      const found = peliculas.find((p) => p.title === incoming.movieTitle);
       if (found) return found.id;
     }
-    return peliculasEjemplo[0].id;
+    return peliculas[0].id;
   })();
 
   const [sucursal, setSucursal] = useState(initialSucursal);
@@ -39,11 +32,12 @@ export default function Boleteria() {
   const [cantidad, setCantidad] = useState(1);
   const [ticket, setTicket] = useState(null);
 
-  const selectedMovie = peliculasEjemplo.find((p) => p.id === pelicula) || peliculasEjemplo[0];
+  // Este es el selectedMovie: objeto de la película seleccionada (desde peliculasData)
+  const selectedMovie = peliculas.find((p) => p.id === pelicula) || peliculas[0];
   const price = selectedMovie ? selectedMovie.basePrice * cantidad : 0;
 
   function handleComprar() {
-    // create a ticket object and show it in the UI
+    // crea un ojeto tike y lo muestra en la interfaz del usuario
     const id = `T-${Date.now().toString().slice(-6)}`;
     const ticketObj = {
       id,
@@ -52,7 +46,7 @@ export default function Boleteria() {
       hora,
       cantidad,
       total: price,
-      imagen: selectedMovie.img
+      imagen: selectedMovie.image
     };
 
     setTicket(ticketObj);
@@ -79,7 +73,7 @@ export default function Boleteria() {
 
             <label>Película</label>
             <select value={pelicula} onChange={(e) => setPelicula(e.target.value)}>
-              {peliculasEjemplo.map((p) => (
+              {peliculas.map((p) => (
                 <option key={p.id} value={p.id}>{p.title}</option>
               ))}
             </select>
@@ -100,21 +94,9 @@ export default function Boleteria() {
           </div>
 
           <aside className="boleteria-summary">
-            <h3>Resumen</h3>
-
-            <div className="boleteria-movie">
-              <div className="boleteria-movie-img"><img src={selectedMovie.img} alt={selectedMovie.title} /></div>
-              <div>
-                <p className="boleteria-movie-title">{selectedMovie.title}</p>
-                <p className="boleteria-movie-meta">Precio por unidad: S/ {selectedMovie.basePrice}</p>
-              </div>
-            </div>
-
-            <div className="boleteria-details">
-              <p><strong>Sucursal:</strong> {sucursales.find(s => s.id === sucursal).name}</p>
-              <p><strong>Horario:</strong> {hora}</p>
-              <p><strong>Cantidad:</strong> {cantidad}</p>
-              <div className="boleteria-total">Total: S/ {price}</div>
+            <div className="boleteria-summary-image">
+              {/* Imagen de la película seleccionada (desde peliculasData: selectedMovie.image) */}
+              <img src={selectedMovie.image} alt={selectedMovie.title} />
             </div>
           </aside>
         </div>
@@ -123,7 +105,8 @@ export default function Boleteria() {
           <div className="ticket-modal">
             <div className="ticket-card">
               <div className="ticket-left">
-                <img src={ticket.imagen} alt={ticket.pelicula} />
+                {/* Imagen usada en el ticket (se copia desde selectedMovie.image al crear el ticket) */}
+               <img src={ticket.imagen} alt={ticket.pelicula} />
               </div>
               <div className="ticket-right">
                 <h2>Entrada</h2>
