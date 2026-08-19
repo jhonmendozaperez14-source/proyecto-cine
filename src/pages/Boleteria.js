@@ -101,10 +101,12 @@ export default function Boleteria() {
               </div>
             </div>
 
-            <p><strong>Sucursal:</strong> {sucursales.find(s => s.id === sucursal).name}</p>
-            <p><strong>Horario:</strong> {hora}</p>
-            <p><strong>Cantidad:</strong> {cantidad}</p>
-            <div className="boleteria-total">Total: S/ {price}</div>
+            <div className="boleteria-details">
+              <p><strong>Sucursal:</strong> {sucursales.find(s => s.id === sucursal).name}</p>
+              <p><strong>Horario:</strong> {hora}</p>
+              <p><strong>Cantidad:</strong> {cantidad}</p>
+              <div className="boleteria-total">Total: S/ {price}</div>
+            </div>
           </aside>
         </div>
 
@@ -146,11 +148,6 @@ export default function Boleteria() {
                         <div className="ticket-detail-row">
                           <div className="ticket-detail-label">Total</div>
                           <div className="ticket-detail-value ticket-total">S/ {ticket.total}</div>
-                        </div>
-
-                        <div className="ticket-detail-row">
-                          <div className="ticket-detail-label">Asiento</div>
-                          <div className="ticket-detail-value">General</div>
                         </div>
 
                         <div className="ticket-actions">

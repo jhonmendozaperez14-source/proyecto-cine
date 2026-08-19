@@ -17,9 +17,29 @@
 
 .boleteria-grid {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 320px 1fr; /* summary on the left, form on the right */
   gap: 24px;
 }
+
+/* larger movie summary card on the left */
+.boleteria-summary {
+  background: #f8f9fb;
+  padding: 18px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.boleteria-movie { display:flex; gap:12px; align-items:center; margin-bottom:6px; }
+.boleteria-movie-img img { width: 160px; height: 100px; object-fit: cover; border-radius:8px; display:block; }
+.boleteria-movie-title { margin:0; font-weight:800; font-size:16px; }
+.boleteria-movie-meta { margin:0; color:#777; font-size:13px; }
+
+/* move existing summary styles into left column adjustments */
+.boleteria-summary p, .boleteria-summary .boleteria-movie-meta { color: #333; }
 
 .boleteria-form label {
   display: block;
