@@ -26,7 +26,7 @@ export default function Tarjetas() {
       <div className="fila-tarjetas" ref={filaRef}>
         {peliculasEjemplo.map((pelicula) => (
           <div className="item-tarjeta" key={pelicula.id}>
-            <Tarjeta title={pelicula.title} img={pelicula.img} />
+            <Tarjeta id={pelicula.id} title={pelicula.title} img={pelicula.img} />
           </div>
         ))}
       </div>

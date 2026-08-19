@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../estilos-css/boleteria.css';
 
 const sucursales = [
@@ -8,31 +9,55 @@ const sucursales = [
 ];
 
 const peliculasEjemplo = [
-  { id: 'p1', title: 'La odisea', basePrice: 18 },
-  { id: 'p2', title: 'Sólo una noche', basePrice: 22 },
-  { id: 'p3', title: 'El borde de la guerra', basePrice: 20 }
+  { id: 'p1', title: 'La odisea', basePrice: 18, img: '/imagenes/odicea.jpg' },
+  { id: 'p2', title: 'Sólo una noche', basePrice: 22, img: '/imagenes/avenger.jpg' },
+  { id: 'p3', title: 'El borde de la guerra', basePrice: 20, img: '/imagenes/spider-man.jpg' }
 ];
 
 const horarios = ['12:00', '15:30', '18:45', '21:00'];
 
 export default function Boleteria() {
-  const [sucursal, setSucursal] = useState(sucursales[0].id);
-  const [pelicula, setPelicula] = useState(peliculasEjemplo[0].id);
-  const [hora, setHora] = useState(horarios[0]);
-  const [cantidad, setCantidad] = useState(1);
+  const location = useLocation();
+  const incoming = (location && location.state) || {};
 
-  const selectedMovie = peliculasEjemplo.find((p) => p.id === pelicula);
+  const initialSucursal = sucursales[0].id;
+  const initialPelicula = incoming.movieId || peliculasEjemplo[0].id;
+  const initialHora = horarios[0];
+
+  const [sucursal, setSucursal] = useState(initialSucursal);
+  const [pelicula, setPelicula] = useState(initialPelicula);
+  const [hora, setHora] = useState(initialHora);
+  const [cantidad, setCantidad] = useState(1);
+  const [ticket, setTicket] = useState(null);
+
+  const selectedMovie = peliculasEjemplo.find((p) => p.id === pelicula) || peliculasEjemplo[0];
   const price = selectedMovie ? selectedMovie.basePrice * cantidad : 0;
 
   function handleComprar() {
-    alert(`Compra simulada:\nSucursal: ${sucursal}\nPelícula: ${selectedMovie.title}\nHora: ${hora}\nCantidad: ${cantidad}\nTotal: S/ ${price}`);
+    // create a ticket object and show it in the UI
+    const id = `T-${Date.now().toString().slice(-6)}`;
+    const ticketObj = {
+      id,
+      sucursal: sucursales.find(s => s.id === sucursal).name,
+      pelicula: selectedMovie.title,
+      hora,
+      cantidad,
+      total: price,
+      imagen: selectedMovie.img
+    };
+
+    setTicket(ticketObj);
+  }
+
+  function closeTicket() {
+    setTicket(null);
   }
 
   return (
     <main className="boleteria-page">
       <div className="container boleteria-container">
         <h1>Boletería</h1>
-        <p className="boleteria-sub">Selecciona sucursal, película, horario y cantidad. Esta es una simulación cliente-side.</p>
+        <p className="boleteria-sub">Selecciona sucursal, película, horario y cantidad.</p>
 
         <div className="boleteria-grid">
           <div className="boleteria-form">
@@ -67,13 +92,44 @@ export default function Boleteria() {
 
           <aside className="boleteria-summary">
             <h3>Resumen</h3>
+
+            <div className="boleteria-movie">
+              <div className="boleteria-movie-img"><img src={selectedMovie.img} alt={selectedMovie.title} /></div>
+              <div>
+                <p className="boleteria-movie-title">{selectedMovie.title}</p>
+                <p className="boleteria-movie-meta">Precio por unidad: S/ {selectedMovie.basePrice}</p>
+              </div>
+            </div>
+
             <p><strong>Sucursal:</strong> {sucursales.find(s => s.id === sucursal).name}</p>
-            <p><strong>Película:</strong> {selectedMovie.title}</p>
             <p><strong>Horario:</strong> {hora}</p>
             <p><strong>Cantidad:</strong> {cantidad}</p>
             <div className="boleteria-total">Total: S/ {price}</div>
           </aside>
         </div>
+
+        {ticket && (
+          <div className="ticket-modal">
+            <div className="ticket-card">
+              <div className="ticket-left">
+                <img src={ticket.imagen} alt={ticket.pelicula} />
+              </div>
+              <div className="ticket-right">
+                <h2>Entrada</h2>
+                <p className="ticket-id">#{ticket.id}</p>
+                <p><strong>{ticket.pelicula}</strong></p>
+                <p>{ticket.sucursal} — {ticket.hora}</p>
+                <p>Cantidad: {ticket.cantidad}</p>
+                <p className="ticket-total">Total: S/ {ticket.total}</p>
+
+                <div className="ticket-actions">
+                  <button onClick={closeTicket} className="ticket-close">Cerrar</button>
+                  <button onClick={() => window.print()} className="ticket-print">Imprimir</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );

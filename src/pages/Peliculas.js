@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../estilos-css/peliculas.css';
 import Boton from '../components/Boton';
 
@@ -55,6 +56,7 @@ const peliculas = [
 
 export default function Peliculas({ mostrarCabecera = true }) {
   const peliculasRef = useRef(null);
+  const navigate = useNavigate();
   const contenido = (
     <main className="peliculas-main">
       <div className="container peliculas-container">
@@ -93,7 +95,7 @@ export default function Peliculas({ mostrarCabecera = true }) {
                   </p>
                 </div>
 
-                <Boton href="/boleteria" className="pelicula-cta" variante="primario">{pelicula.btn}</Boton>
+                <button className="pelicula-cta" type="button" onClick={() => navigate('/boleteria', { state: { movieId: pelicula.id } })}>{pelicula.btn}</button>
               </div>
 
               <div className="card-bottom">

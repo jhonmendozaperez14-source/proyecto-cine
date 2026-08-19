@@ -66,3 +66,34 @@
 @media (max-width: 900px) {
   .boleteria-grid { grid-template-columns: 1fr; }
 }
+
+/* ticket modal */
+.ticket-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 120;
+}
+
+.ticket-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  gap: 12px;
+  width: 760px;
+  max-width: calc(100% - 32px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.ticket-left img { width: 240px; height: 100%; object-fit: cover; display:block; }
+.ticket-right { padding: 18px; flex: 1; }
+.ticket-right h2 { margin: 0 0 6px; }
+.ticket-id { color: #666; margin: 6px 0; }
+.ticket-total { font-weight: 900; font-size: 20px; margin-top: 10px; }
+.ticket-actions { margin-top: 12px; display:flex; gap:8px; }
+.ticket-close { background:#ddd; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+.ticket-print { background:#e53935; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
