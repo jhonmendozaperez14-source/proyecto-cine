@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from '../components/Banner';
 import Tarjetas from '../components/Tarjetas';
+import Footer from '../components/Footer';
 import '../pages/Principal.css';
 
 export default function Principal() {
@@ -13,12 +14,7 @@ export default function Principal() {
           <Tarjetas />
         </section>
       </main>
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <div className="footer-brand">Cinemas</div>
-          <div className="footer-copy">© {new Date().getFullYear()} Cinemas. Todos los derechos reservados.</div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
