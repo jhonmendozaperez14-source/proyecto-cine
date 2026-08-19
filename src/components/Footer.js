@@ -20,7 +20,6 @@ export default function Footer() {
         <div className="footer-columna">
           <h3>ENLACES</h3>
 
-          <Link to="/">Inicio</Link>
           <Link to="/peliculas">Películas</Link>
           <Link to="/menu">Menú</Link>
           <Link to="/promociones">Promociones</Link>
