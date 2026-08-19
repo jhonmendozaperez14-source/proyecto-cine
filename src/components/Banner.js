@@ -15,7 +15,7 @@ export default function Banner() {
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 3000);
     return () => clearTimeout(timeoutRef.current);
   }, [index]);
 
