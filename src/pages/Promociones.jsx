@@ -26,6 +26,10 @@ const promotions = [
     location: 'all',
     discount: '2x1',
     type: 'ENTRADAS',
+    validity: 'Todos los martes',
+    audience: 'Para todos',
+    code: 'MARTES2X1',
+    icon: '🎟️',
     gradient: 'linear-gradient(135deg, #9b111e, #270006)',
   },
   {
@@ -36,6 +40,10 @@ const promotions = [
     location: 'all',
     discount: '-25%',
     type: 'ALIMENTOS',
+    validity: 'Hasta el 30 de septiembre',
+    audience: 'Compra en dulcería',
+    code: 'COMBO25',
+    icon: '🍿',
     gradient: 'linear-gradient(135deg, #e07b00, #4d1d00)',
   },
   {
@@ -46,6 +54,10 @@ const promotions = [
     location: 'all',
     discount: 'REWARDS',
     type: 'REWARDS',
+    validity: 'Beneficio permanente',
+    audience: 'Miembros CineMax',
+    code: 'REWARDS',
+    icon: '★',
     gradient: 'linear-gradient(135deg, #5b1fa8, #18052e)',
   },
   {
@@ -56,6 +68,10 @@ const promotions = [
     location: 'all',
     discount: 'FAMILIA',
     type: 'FAMILIA',
+    validity: 'Sábados y domingos',
+    audience: 'Funciones seleccionadas',
+    code: 'FAMILIA',
+    icon: '♥',
     gradient: 'linear-gradient(135deg, #147d91, #06252d)',
   },
   {
@@ -66,6 +82,10 @@ const promotions = [
     location: 'lima',
     discount: '$5',
     type: 'ESPECIAL',
+    validity: 'Hasta agotar stock',
+    audience: 'CineMax Lima',
+    code: 'CINE5',
+    icon: '◆',
     gradient: 'linear-gradient(135deg, #555, #111)',
   },
   {
@@ -76,6 +96,10 @@ const promotions = [
     location: 'callao',
     discount: '2x1',
     type: 'DULCERÍA',
+    validity: 'Todos los jueves',
+    audience: 'CineMax Callao',
+    code: 'DULCE2X1',
+    icon: '🥤',
     gradient: 'linear-gradient(135deg, #b51c30, #3d050c)',
   },
 ];
@@ -84,15 +108,22 @@ function PromotionCard({ promo, onOpen }) {
   return (
     <article className="promotion-card" data-category={promo.category} data-location={promo.location}>
       <div className="promotion-image" style={{ background: promo.gradient }}>
+        <span className="promotion-icon" aria-hidden="true">{promo.icon}</span>
         <span className="discount">{promo.discount}</span>
+        <span className="limited-badge">OFERTA LIMITADA</span>
       </div>
 
       <div className="promotion-content">
         <span className="promotion-type">{promo.type}</span>
         <h3>{promo.title}</h3>
         <p>{promo.description}</p>
+        <div className="promotion-meta">
+          <span><strong>Vigencia</strong>{promo.validity}</span>
+          <span><strong>Aplica en</strong>{promo.audience}</span>
+        </div>
+        <div className="promo-code"><span>CÓDIGO</span><strong>{promo.code}</strong></div>
         <button className="details-btn" onClick={() => onOpen(promo.title, promo.description)}>
-          Ver detalles
+          Ver detalles <span aria-hidden="true">→</span>
         </button>
       </div>
     </article>
@@ -174,14 +205,20 @@ export default function Promociones() {
           <div className="section-title">
             <div>
               <span>OFERTAS DESTACADAS</span>
-              <h2>Promociones actuales</h2>
+              <h2>Promociones actuales <small>{filteredPromotions.length} disponibles</small></h2>
             </div>
           </div>
 
           <div className="promotion-grid">
-            {filteredPromotions.map((promo) => (
+            {filteredPromotions.length > 0 ? filteredPromotions.map((promo) => (
               <PromotionCard key={promo.id} promo={promo} onOpen={showPromotion} />
-            ))}
+            )) : (
+              <div className="empty-state">
+                <span className="empty-icon" aria-hidden="true">⌕</span>
+                <h3>No encontramos promociones</h3>
+                <p>Prueba con otra categoría o ubicación para descubrir nuevas ofertas.</p>
+              </div>
+            )}
           </div>
         </section>
 

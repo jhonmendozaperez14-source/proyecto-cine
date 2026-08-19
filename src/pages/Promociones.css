@@ -651,3 +651,216 @@ footer p {
         gap: 10px;
     }
 }
+
+/* Detalles visuales de la experiencia de promociones */
+.promo-page {
+    overflow: hidden;
+}
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    background:
+        linear-gradient(90deg, #050505 10%, rgba(5,5,5,.85) 40%, rgba(5,5,5,.25)),
+        linear-gradient(135deg, #8b0000, #220000 60%, #050505),
+        repeating-linear-gradient(105deg, transparent 0 58px, rgba(255,255,255,.035) 59px, transparent 60px);
+}
+
+.hero::after {
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    box-shadow: 0 0 0 30px rgba(255,255,255,.025), 0 0 0 60px rgba(255,255,255,.018);
+    content: '';
+    height: 460px;
+    position: absolute;
+    right: 8%;
+    top: 10%;
+    width: 460px;
+    z-index: -1;
+}
+
+.filter-container {
+    flex-wrap: wrap;
+}
+
+.promotions-section {
+    background: #0d0d0d;
+}
+
+.section-title h2 small {
+    color: #777;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: 0;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+
+.promotion-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.promotion-image {
+    min-height: 210px;
+    overflow: hidden;
+}
+
+.promotion-image::before {
+    background: radial-gradient(circle at 50% 35%, rgba(255,255,255,.2), transparent 34%), repeating-linear-gradient(90deg, transparent 0 24px, rgba(0,0,0,.12) 25px 26px);
+    content: '';
+    inset: 0;
+    opacity: .65;
+    position: absolute;
+}
+
+.promotion-icon {
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,.35));
+    font-size: 34px;
+    left: 22px;
+    position: absolute;
+    top: 18px;
+}
+
+.limited-badge {
+    background: rgba(0,0,0,.45);
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 6px 9px;
+    position: absolute;
+    right: 18px;
+    top: 18px;
+}
+
+.promotion-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.promotion-meta {
+    border-bottom: 1px solid #292929;
+    border-top: 1px solid #292929;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 8px;
+    padding: 14px 0;
+}
+
+.promotion-meta span {
+    color: #aaa;
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.promotion-meta strong {
+    color: #eee;
+    display: block;
+    font-size: 10px;
+    letter-spacing: .7px;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+
+.promo-code {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+}
+
+.promo-code span {
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+.promo-code strong {
+    border: 1px dashed #666;
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 8px;
+}
+
+.details-btn {
+    padding: 0;
+    text-align: left;
+}
+
+.details-btn span {
+    color: var(--red);
+    font-size: 18px;
+    margin-left: 8px;
+    transition: margin .2s ease;
+}
+
+.details-btn:hover span {
+    margin-left: 13px;
+}
+
+.empty-state {
+    border: 1px dashed #3a3a3a;
+    color: #aaa;
+    grid-column: 1 / -1;
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.empty-icon {
+    color: var(--red);
+    display: block;
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.empty-state h3 {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 14px;
+}
+
+.rewards {
+    border: 1px solid #421015;
+    overflow: hidden;
+    position: relative;
+}
+
+.rewards::after {
+    color: rgba(255,255,255,.08);
+    content: '✦';
+    font-size: 240px;
+    position: absolute;
+    right: 28%;
+    top: -75px;
+    transform: rotate(15deg);
+}
+
+.rewards-card {
+    box-shadow: 12px 12px 0 rgba(0,0,0,.28);
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 600px) {
+    .hero::after {
+        right: -260px;
+        top: 35%;
+    }
+
+    .section-title h2 small {
+        display: block;
+        margin: 8px 0 0;
+    }
+
+    .promotion-meta {
+        gap: 8px;
+    }
+}
