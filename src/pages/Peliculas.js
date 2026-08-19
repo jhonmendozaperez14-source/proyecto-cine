@@ -98,9 +98,9 @@ export default function Peliculas({ mostrarCabecera = true }) {
               </div>
 
               <div className="card-bottom">
-                <div style={{display: 'flex', gap: '8px', alignItems: 'center'}}>
+                <div className="acciones-card">
                   <button type="button" className="small-btn">Funciones</button>
-                  <input type="text" aria-label="Buscar función" style={{width: '48px', padding: '6px', borderRadius: '4px', border: '1px solid #eee'}} />
+                  <input type="text" aria-label="Buscar función" className="buscador-funcion" />
                 </div>
               </div>
             </article>

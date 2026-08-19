@@ -34,7 +34,7 @@ export default function Banner() {
           <div
             key={s.id}
             className={`slide ${i === index ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${s.img})` }}
+            style={{ '--bg-image': `url(${s.img})` }}
             aria-hidden={i !== index}
           >
             <div className="container banner-inner">
