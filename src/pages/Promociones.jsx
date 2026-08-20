@@ -12,9 +12,9 @@ const categoryOptions = [
 
 const locationOptions = [
   { value: 'all', label: 'Todos los cines' },
-  { value: 'lima', label: 'CineMax Lima' },
-  { value: 'callao', label: 'CineMax Callao' },
-  { value: 'miraflores', label: 'CineMax Miraflores' },
+  { value: 'lima', label: 'CineMas Lima' },
+  { value: 'callao', label: 'CineMas Callao' },
+  { value: 'miraflores', label: 'CineMas Miraflores' },
 ];
 
 const promotions = [
@@ -48,7 +48,7 @@ const promotions = [
   },
   {
     id: 3,
-    title: 'CineMax Rewards',
+    title: 'CineMas Rewards',
     description: 'Acumula puntos con tus compras y canjéalos por diferentes beneficios.',
     category: 'rewards',
     location: 'all',
@@ -83,7 +83,7 @@ const promotions = [
     discount: '$5',
     type: 'ESPECIAL',
     validity: 'Hasta agotar stock',
-    audience: 'CineMax Lima',
+    audience: 'CineMas Lima',
     code: 'CINE5',
     icon: '◆',
     gradient: 'linear-gradient(135deg, #555, #111)',
@@ -237,7 +237,7 @@ export default function Promociones() {
 
           <div className="rewards-card">
             <div className="star">★</div>
-            <h3>CineMax Rewards</h3>
+            <h3>CineMas Rewards</h3>
             <p>Puntos por tus compras</p>
             <strong>+ BENEFICIOS</strong>
           </div>

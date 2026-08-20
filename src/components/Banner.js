@@ -43,7 +43,6 @@ export default function Banner() {
                 <div className="banner-ctas">
                   {/* Al hacer click pasamos el id de la película a la boletería mediante state: movieId */}
                   <button className="boton boton-primario boton-banner-primario" onClick={() => navigate('/boleteria', { state: { movieId: s.id } })}>Entradas</button>
-                  <a className="boton boton-borde boton-banner-borde" href="#promos">Promociones</a>
                 </div>
               </div>
             </div>
