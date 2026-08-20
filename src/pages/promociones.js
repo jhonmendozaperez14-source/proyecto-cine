@@ -1,6 +1,3 @@
-// ======================================
-// SCROLL A PROMOCIONES
-// ======================================
 
 function scrollToPromotions() {
 
@@ -13,9 +10,6 @@ function scrollToPromotions() {
 }
 
 
-// ======================================
-// MOSTRAR DETALLES
-// ======================================
 
 function showPromotion(title, description) {
 
@@ -38,9 +32,6 @@ function showPromotion(title, description) {
 }
 
 
-// ======================================
-// CERRAR MODAL
-// ======================================
 
 function closeModal() {
 
@@ -52,9 +43,6 @@ function closeModal() {
 }
 
 
-// ======================================
-// CERRAR MODAL AL HACER CLICK FUERA
-// ======================================
 
 document
     .getElementById("modal")
@@ -69,9 +57,6 @@ document
     });
 
 
-// ======================================
-// FILTRAR PROMOCIONES
-// ======================================
 
 function filterPromotions() {
 
