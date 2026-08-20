@@ -62,9 +62,9 @@ export default function Cabecera() {
             <button type="button" className="nav-button" onClick={() => toggleMenu('mas')}>
               MÁS ▾
             </button>
-            <div className={`submenu ${menuAbierto === 'mas' ? 'open' : ''}`}>
-              <a href="#sucursales">Sucursales</a>
-            </div>
+           <div className={`submenu ${menuAbierto === 'mas' ? 'open' : ''}`}>
+           <Link to="/sucursales">SUCURSALES</Link>
+          </div>
           </div>
         </nav>
       </header>

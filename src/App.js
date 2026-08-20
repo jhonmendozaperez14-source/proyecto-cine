@@ -8,6 +8,7 @@ import Formulario from './pages/Formulario';
 import HojaRegistro from './pages/Hoja_Registro';
 import Boleteria from './pages/Boleteria';
 import Cabecera from './components/Cabecera';
+import Sucursales from './pages/Sucursales';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/promociones" element={<Promociones />} />
         <Route path="/formulario" element={<Formulario />} />
         <Route path="/hoja-registro" element={<HojaRegistro />} />
-        
+        <Route path="/sucursales" element={<Sucursales />} />
       </Routes>
     </BrowserRouter>
   );
