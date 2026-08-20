@@ -19,7 +19,7 @@ export default function Tarjetas() {
         {peliculas.slice(0,6).map((pelicula) => (
           <div className="item-tarjeta" key={pelicula.id}>
             {/* Pasar imagen a Tarjeta: la prop 'img' recibe pelicula.image desde peliculasData */}
-            <Tarjeta id={pelicula.id} title={pelicula.title} img={pelicula.image} />
+            <Tarjeta id={pelicula.id} title={pelicula.title} img={pelicula.image} trailer={pelicula.trailer} />
           </div>
         ))}
       </div>

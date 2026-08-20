@@ -2,11 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../estilos-css/tarjeta.css';
 
-export default function Tarjeta({ title, img, id }) {
+export default function Tarjeta({ title, img, id, trailer }) {
   const navigate = useNavigate();
 
   function openFunciones() {
     navigate('/boleteria', { state: { movieId: id } });
+  }
+
+  function openTrailer() {
+    if (!trailer) return;
+    window.open(trailer, '_blank', 'noopener,noreferrer');
   }
 
   return (
@@ -24,7 +29,7 @@ export default function Tarjeta({ title, img, id }) {
         <h3 className="titulo-pelicula">{title}</h3>
         <div className="acciones-pelicula">
           <button onClick={openFunciones} className="boton boton-primario boton-pequeno">Funciones</button>
-          <button className="boton boton-borde boton-pequeno">Detalles</button>
+          <button onClick={openTrailer} className="boton boton-borde boton-pequeno">Detalle</button>
         </div>
       </div>
     </article>
